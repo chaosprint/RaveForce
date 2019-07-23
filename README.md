@@ -26,7 +26,23 @@ p = Pbind(
 );
 
 RaveForce.start(p, key: \freq, bpm:30, total_step:1);
+
+// start the task with the pattern we define
+// key states which parameters to control, in this example, the frequency is the only one for the agent to choose
 )
 ```
 
+The total step of one means every time the pattern reaches the total step, the pattern will be rendered.
+
+Typically, the workflow is:
+
+- Python sends parameters
+- SC reads the paramters and render the pattern in non-real-time with the length of current step
+- Python reads the audio output and train the neural networks
+- Repreat
+
 4. After the SuperCollider code is running, command can be sent from Python.
+
+Jupyter notebook is recommended for the training.
+
+The Jupyter nobebook related to the task designed in Step 3 can be found in the Python folder from this repo.
