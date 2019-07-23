@@ -3,11 +3,11 @@ RaveForce is an environment that allows you to define your musical task in Super
 
 ## SuperCollider
 
-- To use it, copy the ```Extensions``` folder to the SuperCollider ```Open user support directory```. You can find it in the ```File``` menu of the SuperCollider IDE.
+To use it, copy the ```Extensions``` folder to the SuperCollider ```Open user support directory```. You can find it in the ```File``` menu of the SuperCollider IDE.
 
-- Recompile the SuperCollider library. You can find the command and shortcut in the ```Language``` menu of SuperCollider IDE.
+Recompile the SuperCollider library. You can find the command and shortcut in the ```Language``` menu of SuperCollider IDE.
 
-- An example code to run is as below:
+An example code to run is as below:
 
 ```
 (
@@ -43,7 +43,7 @@ Typically, the workflow is:
 
 ## Python
 
-- After the SuperCollider code is running, command can be sent from Python.
+After the SuperCollider code is running, command can be sent from Python.
 
 Jupyter notebook is recommended for the training.
 
