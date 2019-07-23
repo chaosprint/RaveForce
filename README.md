@@ -1,7 +1,7 @@
 # RaveForce
 RaveForce is an environment that allows you to define your musical task in SuperCollider and train an agent to do the task in Python.
 
-# SuperCollider
+## SuperCollider
 
 - To use it, copy the ```Extensions``` folder to the SuperCollider ```Open user support directory```. You can find it in the ```File``` menu of the SuperCollider IDE.
 
