@@ -56,3 +56,14 @@ action = env.action_space.sample()
 observation, reward, done, info = env.step(action)
 env.render()
 ```
+
+## Citation
+If this project is useful for you in academic work, it would be wonderful if you could cite the paper where it is introduced:
+
+>Lan, Qichao, Jim Tørresen, and Alexander Refsum Jensenius. "RaveForce: A Deep Reinforcement Learning Environment for Music Generation." (2019).
+
+@article{lan2019raveforce,
+  title={RaveForce: A Deep Reinforcement Learning Environment for Music Generation},
+  author={Lan, Qichao and T{\o}rresen, Jim and Jensenius, Alexander Refsum},
+  year={2019}
+}
