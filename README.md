@@ -47,4 +47,12 @@ After the SuperCollider code is running, command can be sent from Python.
 
 Jupyter notebook is recommended for the training.
 
-The Jupyter nobebook related to the task designed in Step 3 can be found in the Python folder from this repo.
+```
+import raveforce
+
+env = raveforce.make("continuous", 1) // one continuous parameter is between 0 to 1
+observation = env.reset()
+action = env.action_space.sample()
+observation, reward, done, info = env.step(action)
+env.render()
+```
