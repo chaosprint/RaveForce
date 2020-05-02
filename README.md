@@ -34,13 +34,6 @@ RaveForce.start(p, key: \freq, bpm:30, total_step:1);
 
 The total step of one means every time the pattern reaches the total step, the pattern will be rendered.
 
-Typically, the workflow is:
-
-- Python sends parameters
-- SC reads the paramters and render the pattern in non-real-time with the length of current step
-- Python reads the audio output and train the neural networks
-- Repreat
-
 ## Python
 
 After the SuperCollider code is running, command can be sent from Python.
@@ -56,6 +49,15 @@ action = env.action_space.sample()
 observation, reward, done, info = env.step(action)
 env.render()
 ```
+
+You may need to install the dependencies using ```pip```.
+
+Typically, the workflow is:
+
+- Python sends parameters
+- SC reads the paramters and render the pattern in non-real-time with the length of current step
+- Python reads the audio output and train the neural networks
+- Repreat
 
 ## Citation
 If this project is useful for you in academic work, it would be wonderful if you could cite the paper where it is introduced:
