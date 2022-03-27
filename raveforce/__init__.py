@@ -2,6 +2,7 @@ from wasmer import engine, Store, Module, Instance, Memory, ImportObject, Functi
 from wasmer_compiler_cranelift import Compiler
 from urllib.request import urlopen
 import numpy as np
+import sys
 import datetime
 import struct, random
 
@@ -146,14 +147,15 @@ class ActionSpace(object):
             if action[0] == "lin":
                 result[i] = action[1] + random.random() * (action[2] - action[1])
             elif action[0] == "exp":
-                # TODO
-                result[i] = action[1] + random.random() * (action[2] - action[1])
-            elif action[0] == "by":
+                point_a = np.log(action[1]+sys.float_info. min)
+                point_b = np.log(action[2])
+                result[i] = np.exp(point_a + random.random()*(point_b - point_a))
+            elif action[0] == "rel":
                 func = action[2]
                 by = result[action[1]]
                 result[i] = func(by)
-            elif action[0] == "pick":
-                result[i] = random.choice(action[1:])
+            elif action[0] == "choose":
+                result[i] = random.choice(action[1])
             else:
                 pass
         return result
