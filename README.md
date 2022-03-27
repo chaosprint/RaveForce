@@ -1,34 +1,26 @@
 # RaveForce
-RaveForce is an Python environment that allows you to define your musical task in [Glicol](https://glicol.org) synth, and train an agent to do the task with APIs similar to the [OpenAI Gym](https://gym.openai.com).
+RaveForce is a Python package that allows you to define your musical task in Python with [Glicol](https://glicol.org) syntax, and train an agent to do the task with APIs similar to the [OpenAI Gym](https://gym.openai.com).
 
 ## Why RaveForce
 
-It seems that `music generation` researches have been dominated by MIDI generation or audio generation with either supervised method via a corpus or unsupervised method with some sample library.
+It seems that `music generation` researches have been dominated by MIDI generation or audio generation methods with either supervised learning via a corpus or unsupervised learning with some sample library. But let's consider a simple example: you want to train an agent to play the synth sequencer for you. The goal is to copy a famous bass line. Therefore, in each `step`, the `agent` needs to make a decision on which note to play and what kind of timbre to make. The agent can have an `observation` of what has been synthesised, and the `reward` is calculated by comparing the similarity at the moment.
 
-But let's consider a simple example: you want to train an agent to play the synth sequencer for you. The goal is to copy a famous bass line. Therefore, in each `step`, the `agent` needs to make a decision on which note to play and what kind of timbre to make. The agent can have an `observation` of what has been synthesised, and the `reward` calculated by comparing the similarity at the moment.
+Yet it can be very difficult and time-consuming to build a real-world environment (such as a music robot) to cover all the needs for electronic music. Another option is to use some built-in Python function to compose our `music tasks`, but still, for each task, you need to write some DSP function chains which will never be used again in practice.
 
-Yet it can be very diffucult and time-comsuming if we want to have a real-world environment (such as a music robot) setup. Another option is to use some built-in Python function to compose our `music tasks`, but a better way is to find a common place between our simulation and the real-world music practices.
-
-Live coding is exactly such a practice where the artistic perform improvised algorithmic music by writing program code in real-time.
-
-Glicol is a new live coding language that can be accessed in the browsers:
-
-https://glicol.org
-
-The syntax of Glicol is very similar to synth or sequencers, which perfectly fits our needs. Plus, Glicol is written in Rust and can be used in Python easily (which is already wrapped in this pip package).
+A better way is to find a commonplace between our simulation and real-world music practices. Live coding is exactly such a practice where the artist performs improvised algorithmic music by writing program code in real-time.
 
 Therefore, the final architecture is:
 
 ```
 Agent
--> Generate Glicol code
--> Glicol does the non-real-time synthesis in Python
+-> Play around the live coding code
+-> Live coding engine does the non-real-time synthesis
 -> Get the reward, observation space, etc.
 ```
 
-This process should involve some deep neural network as the synthesised audio is much difficult to process than the symbolic sequences.
+This process should involve some deep neural network as the synthesised audio is much more difficult to process than the symbolic sequences.
 
-For more background, please refer to this paper:
+Previously, SuperCollider is used for RaveForce. See paper:
 > Lan, Qichao, Jim Tørresen, and Alexander Refsum Jensenius. "RaveForce: A Deep Reinforcement Learning Environment for Music Generation." (2019).
 ```
 @article{lan2019raveforce,
@@ -37,7 +29,15 @@ For more background, please refer to this paper:
   year={2019}
 }
 ```
-> Note that the implementation of this paper has been moved to the `sc` branch
+> Note that the implementation of this paper has been moved to the `sc` branch.
+
+But due to the speed limit of non-real-time synthesis on hard disk, we switch to Glicol. 
+
+Glicol is a new live coding language that can be accessed in the browsers:
+
+https://glicol.org
+
+The syntax of Glicol is very similar to synth or sequencers, which perfectly fits our needs. Plus, Glicol is written in Rust and can be called in Python via WebAssembly (there are other methods but wasm is used since it shares the same format with Glicol js bindings).
 
 ## How to use RaveForce
 
@@ -91,4 +91,8 @@ plt.plot(observation) # make your own import matplotlib
 print(reward, done, info)
 ```
 
-I also made [an interactive exmaple on the Google Colab](https://colab.research.google.com/drive/1mngiLHKrtCs4V2yfSfeILByCTtmdkPoJ?usp=sharing), you can play around with it.
+In this example, after 2000 iterations, the rewards are quite clear that a low attack and a low freq is best to simulate a kick drum, which makes sense.
+
+![The result after 2000 iterations](./demo_result.png)
+
+I also made [an interactive example on the Google Colab](https://colab.research.google.com/drive/1mngiLHKrtCs4V2yfSfeILByCTtmdkPoJ?usp=sharing), you can play around with it.
