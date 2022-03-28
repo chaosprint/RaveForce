@@ -1,7 +1,9 @@
 # RaveForce
 RaveForce is a Python package that allows you to define your musical task in Python with [Glicol](https://glicol.org) syntax, and train an agent to do the task with APIs similar to the [OpenAI Gym](https://gym.openai.com).
 
-Here is [an interactive example on the Google Colab](https://colab.research.google.com/drive/1mngiLHKrtCs4V2yfSfeILByCTtmdkPoJ?usp=sharing), you can play around with it.
+Here is [an interactive example on the Google Colab](https://colab.research.google.com/drive/1mngiLHKrtCs4V2yfSfeILByCTtmdkPoJ?usp=sharing).
+
+![The result after 2000 iterations](https://raw.githubusercontent.com/chaosprint/RaveForce/main/demo_result.png)
 
 ## Why RaveForce
 
@@ -80,7 +82,3 @@ observation, reward, done, info = env.step(action)
 plt.plot(observation) # make your own import matplotlib
 print(reward, done, info)
 ```
-
-In this example, after 2000 iterations, the rewards are quite clear that a low attack and a low freq is best to simulate a kick drum, which makes sense.
-
-![The result after 2000 iterations](./demo_result.png)
