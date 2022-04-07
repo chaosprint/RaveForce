@@ -12,11 +12,12 @@ Let's consider a simple example: you want to train an agent to play the synth se
 Yet it can be very difficult and time-consuming to build a real-world environment (such as a music robot) to cover all the needs for electronic music. Another option is to use some built-in Python function to compose our `music tasks`, but still, for each task, you need to write some DSP function chains which will be unlikely for these codes to be used again in the real world. A better way is to find a commonplace between our simulation and real-world music practices. Live coding is exactly such a practice where the artist performs improvised algorithmic music by writing program code in real-time. What if we train a virtual agent to write (part of the) code to synthesis a loop for us?
 
 The architecture looks like this:
-```
-Agent
--> Play around the live coding code
--> Live coding engine does the non-real-time synthesis
--> Get the reward, observation space, etc.
+```mermaid
+flowchart TD
+    A[agent, i.e. a neural network] --> B
+    B[input current states. output params of the live coding code] --> C
+    C[live coding engine does the non-real-time synthesis] --> D
+    D[get the reward, observation space, etc.] -- update --> A
 ```
 
 This process should involve some deep neural network as the synthesised audio is much more difficult to process than the symbolic sequences.
