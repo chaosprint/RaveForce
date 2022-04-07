@@ -18,7 +18,7 @@ URL = 'https://github.com/chaosprint/RaveForce'
 EMAIL = 'chaosprint@gmail.com'
 AUTHOR = 'Qichao Lan (chaosprint)'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.2.3'
+VERSION = '0.2.4'
 
 # What packages are required for this module to be executed?
 REQUIRED = [

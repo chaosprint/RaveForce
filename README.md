@@ -65,9 +65,9 @@ env = gym.make(
     step_len=dur,
     target = target,
     action_space=[
-      ["lin", 0.0001, dur-0.0001], 
-      ["rel", 0, lambda x: dur-0.0001-x], # related to para 0
-      ["exp", 10, 10000]
+      ("lin", 0.0001, dur-0.0001), 
+      ("rel", 0, lambda x: dur-0.0001-x), # related to para 0
+      ("exp", 10, 10000)
     ]
 )
 ```
@@ -82,3 +82,13 @@ observation, reward, done, info = env.step(action)
 plt.plot(observation) # make your own import matplotlib
 print(reward, done, info)
 ```
+
+## License
+
+Glicol branch (main):
+
+> MIT License
+
+SuperCollider branch:
+
+> GPL-3.0 License
